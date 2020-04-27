@@ -1,5 +1,7 @@
 package com.sheziong.bootlaunchdemo.model;
 
+
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -16,7 +18,10 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+
 public class Article {
+
+
     private Long id;
     private String author;
     private String title;
