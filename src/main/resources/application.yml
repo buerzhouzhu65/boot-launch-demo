@@ -5,3 +5,45 @@ spring:
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8
+  datasource:
+    url: jdbc:mysql://localhost:3306/shexiong?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: root
+    password: 200315
+    driver-class-name: com.mysql.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database: mysql
+    show-sql: true
+
+#    1. 一个家庭有爸爸、妈妈、孩子。
+#    2. 这个家庭有一个名字（family-name）叫做“happy family”
+#    3. 爸爸有名字(name)和年龄（age）两个属性
+#    4. 妈妈有两个别名
+#    5. 孩子除了名字(name)和年龄（age）两个属性，还有一个friends的集合
+#    6. 每个friend有两个属性：hobby(爱好)和性别(sex)
+family:
+  family-name: "happy family"
+  father:
+    name: shexiong
+    age: 27
+  mother:
+    alias:
+      - lily
+      - Jane
+  children:
+    name: she
+    age: 5
+    friend:
+      - hobby: basketball
+        sex: male
+      - hobby: football
+        sex: female
+#占位符
+#${random.value}
+#${random.int}
+#${random.long}
+#${random.int(10)}
+#${random.int[1024,65536]}
+#默认值,如果xxxx.yyyy不存在则用默认值
+#${xxxxx.yyyy:默认值}:

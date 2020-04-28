@@ -1,11 +1,14 @@
 package com.sheziong.bootlaunchdemo.controller;
 
 import com.sheziong.bootlaunchdemo.model.AjaxResponse;
-import com.sheziong.bootlaunchdemo.model.Article;
+
+import com.sheziong.bootlaunchdemo.model.ArticleVO;
+import com.sheziong.bootlaunchdemo.service.ArticleRestJPAService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Date;
+import javax.annotation.Resource;
+
 
 import static org.springframework.web.bind.annotation.RequestMethod.*;
 
@@ -17,11 +20,13 @@ import static org.springframework.web.bind.annotation.RequestMethod.*;
 @RestController
 @RequestMapping("/rest")
 public class ArticleRestController {
+    @Resource(name = "articleRestJPAServiceImpl")
+    ArticleRestJPAService articleRestJPAService;
 
     // 增加一篇文章，采用POST方法
     @RequestMapping(value = "/article", method = POST, produces = "application/json")
-    public AjaxResponse saveArticle(@RequestBody Article article) {
-        log.info("saveArticle:{}", article);
+    public AjaxResponse saveArticle(@RequestBody ArticleVO article) {
+        articleRestJPAService.saveArticle(article);
         return AjaxResponse.success(article);
     }
 
@@ -31,28 +36,29 @@ public class ArticleRestController {
     // URL为http://localhost:8888/rest/article/1
     @RequestMapping(value = "/article/{id}", method = DELETE, produces = "application/json")
     public AjaxResponse deleteArticle(@PathVariable Long id) {
-        log.info("deleteArticle:{}", id);
+        articleRestJPAService.deleteArticle(id);
         return AjaxResponse.success(id);
     }
 
     // 更新一篇文章，采用PUT方法，参数是id
     @RequestMapping(value = "/article/{id}", method = PUT, produces = "application/json")
-    public AjaxResponse updateArticle(@PathVariable Long id, @RequestBody Article article) {
+    public AjaxResponse updateArticle(@PathVariable Long id, @RequestBody ArticleVO article) {
         article.setId(id);
-        log.info("updateArticle:{}", article);
+        articleRestJPAService.updateArticle(article);
         return AjaxResponse.success(article);
     }
 
     // 获取一篇article，采用GET方法
     @RequestMapping(value = "/article/{id}", method = GET, produces = "application/json")
     public AjaxResponse getArticle(@PathVariable("id") Long id) {
-        Article article = Article.builder()
-                .id(1L).author("shexiong")
-                .context("Springboot")
-                .createTime(new Date())
-                .title("t1")
-                .build();
+        ArticleVO article = articleRestJPAService.getArticle(id);
         return AjaxResponse.success(article);
+    }
+
+    // 获取所有的article，采用GET方法
+    @RequestMapping(value = "/article", method = GET, produces = "application/json")
+    public AjaxResponse getAll() {
+        return AjaxResponse.success(articleRestJPAService.getAll());
     }
 
 }
