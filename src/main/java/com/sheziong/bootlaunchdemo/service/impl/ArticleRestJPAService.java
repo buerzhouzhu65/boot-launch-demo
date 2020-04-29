@@ -17,5 +17,7 @@ public interface ArticleRestJPAService {
 
     ArticleVO getArticle(Long id);
 
+//    List<ArticleVO> getArticleByAuthorAndTitle(String author, String title);
+
     List<ArticleVO> getAll();
 }

@@ -1,4 +1,4 @@
-package com.sheziong.bootlaunchdemo.model;
+package com.sheziong.bootlaunchdemo.jpa;
 
 
 
