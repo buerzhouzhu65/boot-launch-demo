@@ -1,19 +1,21 @@
-package com.sheziong.bootlaunchdemo.yaml;
+package com.sheziong.bootlaunchdemo.jpa;
 
-import com.sheziong.bootlaunchdemo.model.ymal.Family;
+import com.sheziong.bootlaunchdemo.jpa.testdb.Article;
+import com.sheziong.bootlaunchdemo.jpa.testdb.ArticleRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class CustomYamlTest {
+class JPATest {
 
     @Autowired
-    Family family;
+    ArticleRepository articleRepository;
 
     @Test
     void hello() {
-        System.out.println(family.toString());
+        Article article = articleRepository.findByAuthor("bigwolf");
+        System.out.println(article.toString());
     }
 
 }

@@ -3,7 +3,7 @@ package com.sheziong.bootlaunchdemo.controller;
 import com.sheziong.bootlaunchdemo.model.AjaxResponse;
 
 import com.sheziong.bootlaunchdemo.model.ArticleVO;
-import com.sheziong.bootlaunchdemo.service.ArticleRestJPAService;
+import com.sheziong.bootlaunchdemo.service.impl.ArticleRestJPAService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
@@ -54,6 +54,12 @@ public class ArticleRestController {
         ArticleVO article = articleRestJPAService.getArticle(id);
         return AjaxResponse.success(article);
     }
+
+/*    // 通过author和title获取一篇article，采用GET方法
+    @RequestMapping(value = "/articleByAuthorAndTitle/{author}/{title}", method = GET, produces = "application/json")
+    public AjaxResponse getArticleByAuthorAndTitle(@PathVariable("author") String author, @PathVariable("title") String title) {
+        return AjaxResponse.success(articleRestJPAService.getArticleByAuthorAndTitle(author, title));
+    }*/
 
     // 获取所有的article，采用GET方法
     @RequestMapping(value = "/article", method = GET, produces = "application/json")

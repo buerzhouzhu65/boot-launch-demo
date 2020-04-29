@@ -1,5 +1,6 @@
-package com.sheziong.bootlaunchdemo.jpa;
+package com.sheziong.bootlaunchdemo.jpa.testdb;
 
+import com.sheziong.bootlaunchdemo.jpa.testdb.Article;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

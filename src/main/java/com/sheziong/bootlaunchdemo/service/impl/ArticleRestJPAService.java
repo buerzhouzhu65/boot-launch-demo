@@ -1,4 +1,4 @@
-package com.sheziong.bootlaunchdemo.service;
+package com.sheziong.bootlaunchdemo.service.impl;
 
 import com.sheziong.bootlaunchdemo.model.ArticleVO;
 

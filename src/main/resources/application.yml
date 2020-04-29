@@ -6,15 +6,31 @@ spring:
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8
   datasource:
-    url: jdbc:mysql://localhost:3306/shexiong?useUnicode=true&characterEncoding=utf-8&useSSL=false
-    username: root
-    password: 200315
-    driver-class-name: com.mysql.jdbc.Driver
+    primary:
+      url: jdbc:mysql://localhost:3306/shexiong?useUnicode=true&characterEncoding=utf-8&useSSL=false
+      username: root
+      password: 200315
+      driver-class-name: com.mysql.jdbc.Driver
+    secondary:
+      url: jdbc:mysql://localhost:3306/shexiong2?useUnicode=true&characterEncoding=utf-8&useSSL=false
+      username: root
+      password: 200315
+      driver-class-name: com.mysql.jdbc.Driver
   jpa:
     hibernate:
       ddl-auto: update
     database: mysql
     show-sql: true
+  jta:
+    atomikos:
+      datasource:
+        max-pool-size: 20
+        borrow-connection-timeout: 60
+      connectionfactory:
+        max-pool-size: 20
+        borrow-connection-timeout: 60
+
+
 
 #    1. 一个家庭有爸爸、妈妈、孩子。
 #    2. 这个家庭有一个名字（family-name）叫做“happy family”

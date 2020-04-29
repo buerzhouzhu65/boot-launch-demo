@@ -1,6 +1,6 @@
 package com.sheziong.bootlaunchdemo.service;
 
-import com.sheziong.bootlaunchdemo.model.Article;
+import com.sheziong.bootlaunchdemo.jpa.testdb.Article;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
